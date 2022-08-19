@@ -6,7 +6,6 @@ import 'adoption_model.dart';
 import 'widgets/adoption_card.dart';
 import 'widgets/input_widgets.dart';
 
-
 class AdoptionScreen extends StatefulWidget {
   final AuthController auth;
   const AdoptionScreen(this.auth, {Key? key}) : super(key: key);
@@ -15,12 +14,10 @@ class AdoptionScreen extends StatefulWidget {
   State<AdoptionScreen> createState() => _AdoptionScreenState();
 }
 
-class _AdoptionScreenState extends State<AdoptionScreen>{
-
+class _AdoptionScreenState extends State<AdoptionScreen> {
   late final PetController _todoController;
   final ScrollController _sc = ScrollController();
   AuthController get _auth => widget.auth;
-
 
   @override
   void initState() {
@@ -31,7 +28,6 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         actions: [
           IconButton(
@@ -40,14 +36,18 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
               },
               icon: const Icon(Icons.logout))
         ],
-        centerTitle:true,
-        title: const Text('iGARCHU',
-          style: TextStyle(fontWeight: FontWeight.bold, ),
+        centerTitle: true,
+        title: const Text(
+          'iGARCHU',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: const Color(0xff3f51b5),
       ),
+
       floatingActionButton: FloatingActionButton(
-        shape:  const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
         ),
         backgroundColor: const Color(0xff3f51b5),
@@ -56,6 +56,7 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
           showAddDialog(context);
         },
       ),
+
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: AnimatedBuilder(
@@ -82,7 +83,13 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
                                   _todoController.removeTodo(todo);
                                 },
                                 onLongPress: () {
-                                  _todoController.updateTodo(todo, todo.adopteeID, todo.name, todo.age, todo.breed, todo.gender);
+                                  _todoController.updateTodo(
+                                      todo,
+                                      todo.adopteeID,
+                                      todo.name,
+                                      todo.age,
+                                      todo.breed,
+                                      todo.gender);
                                   showEditDialog(context, todo);
                                 },
                               )
@@ -138,8 +145,8 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
           );
         });
     if (result != null) {
-      _todoController.updateTodo(todo, result.adopteeID, result.name, result.age, result.gender, result.breed);
-
+      _todoController.updateTodo(todo, result.adopteeID, result.name,
+          result.age, result.gender, result.breed);
     }
   }
 }
