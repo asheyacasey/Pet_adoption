@@ -12,11 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          textTheme: GoogleFonts.soraTextTheme(
-            Theme.of(context).textTheme,
-          )
-      ),
+      restorationScopeId: 'app',
+      theme: ThemeData(textTheme: GoogleFonts.soraTextTheme(Theme.of(context).textTheme)),
       debugShowCheckedModeBanner: false,
       home: Wrapper(),
 

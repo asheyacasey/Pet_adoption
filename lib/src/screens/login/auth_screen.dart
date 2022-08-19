@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pet_adoption/src/screens/adoption/adoption_screen.dart';
 
 import '../../controllers/auth_controller.dart';
+import '../donation/pet_donation_screen.dart';
+import '../home/home_screen.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -14,14 +16,17 @@ class Wrapper extends StatelessWidget {
         builder: (context, Widget? w) {
           if (_authController.currentUser == null) {
             return AuthScreen(_authController);
-          } else {
-            return AdoptionScreen(_authController);
+           }
+          else {
+            return HomeScreen(_authController);
           }
         });
   }
 }
 
 class AuthScreen extends StatefulWidget {
+  static const String route = 'auth-screen';
+
   final AuthController auth;
   const AuthScreen(
       this.auth, {
